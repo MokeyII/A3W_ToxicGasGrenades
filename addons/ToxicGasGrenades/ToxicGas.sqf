@@ -3,7 +3,7 @@
 @file Version: 1.1
 @file Author: Mokey
 @file Description: Toxic Gas addon for A3W
-@web: http://www.fractured-gaming.com
+@web: https://fractured-gaming.com
 @Special Thanks to Pitoucc, CREAMPIE, and Izzer
 -----------------------------------------------------------------------
 This program is free software: you can redistribute it and/or modify
