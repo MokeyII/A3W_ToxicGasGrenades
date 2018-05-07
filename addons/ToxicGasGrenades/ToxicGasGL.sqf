@@ -1,11 +1,11 @@
-//	@file Name: ToxicGasGL.sqf
-//  @file Author: Mokey
-//	@file Description: Toxic Gas addon for A3W
-//	@web: http://www.fractured-gaming.com
-//	@Special Thanks to Pitoucc, CREAMPIE, and Izzer
-
-
-/*/-----------------------------------------------------------------------
+/*
+@file Name: ToxicGas.sqf
+@file Version: 1.1
+@file Author: Mokey
+@file Description: Toxic Gas addon for A3W
+@web: http://www.fractured-gaming.com
+@Special Thanks to Pitoucc, CREAMPIE, and Izzer
+-----------------------------------------------------------------------
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
@@ -18,7 +18,8 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 For more for see <http://www.gnu.org/licenses/>.
------------------------------------------------------------------------/*/
+-----------------------------------------------------------------------
+*/
 
 _gasMask =
         [

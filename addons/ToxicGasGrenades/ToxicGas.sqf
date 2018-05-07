@@ -1,5 +1,6 @@
 /*
 @file Name: ToxicGas.sqf
+@file Version: 1.1
 @file Author: Mokey
 @file Description: Toxic Gas addon for A3W
 @web: http://www.fractured-gaming.com
