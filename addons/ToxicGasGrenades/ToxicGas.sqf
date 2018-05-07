@@ -21,7 +21,14 @@ For more for see <http://www.gnu.org/licenses/>.
 -----------------------------------------------------------------------
 */
 
-_gasMask =
+//Expects a String NOT an array
+thrownSmokeShell = "SmokeShellYellow";
+launcherSmokeShell = "G_40mm_SmokeYellow";
+effectDistance = 7;
+
+
+
+gasMask =
         [
                 "H_CrewHelmetHeli_B",
                 "H_CrewHelmetHeli_O",
@@ -30,7 +37,7 @@ _gasMask =
                 "H_HelmetO_ViperSP_hex_F"
         ];
 
-_exemptVehicles =
+exemptVehicles =
         [
                 "B_MRAP_01_F",
                 "B_MRAP_01_hmg_F",
@@ -90,26 +97,53 @@ gasDamage =
                 sleep 3;                                        // Timer damage is assigned "seconds"
         };
 
-While{true} do
-        {
-                call setNoGasStatus;
-                waituntil
-                {
-                        _smokeShell = nearestObject [getPosATL player, "SmokeShellYellow"];
-                        _curPlayerInvulnState = player getVariable ["isAdminInvulnerable", false];
-                        _smokeShell distance player < 7
-                        &&
-                        velocity _smokeShell isEqualTo [ 0, 0, 0 ]
-                        &&
-                        !_curPlayerInvulnState
-                };
-                if ((headgear player in _gasMask) || ((typeOf vehicle player) in _exemptVehicles)) then
+[]spawn{
+        While{true} do
                 {
                         call setNoGasStatus;
-                }
-                else
+                        waituntil
+                        {
+                                _smokeShell = nearestObject [getPosATL player, thrownSmokeShell];
+                                _curPlayerInvulnState = player getVariable ["isAdminInvulnerable", false];
+                                _smokeShell distance player < effectDistance
+                                &&
+                                velocity _smokeShell isEqualTo [ 0, 0, 0 ]
+                                &&
+                                !_curPlayerInvulnState
+                        };
+                        if ((headgear player in gasMask) || ((typeOf vehicle player) in exemptVehicles)) then
+                        {
+                                call setNoGasStatus;
+                        }
+                        else
+                        {
+                                call setGasStatus;
+                                call gasDamage;
+                        };
+                };
+        };
+[]spawn{
+        While{true} do
                 {
-                        call setGasStatus;
-                        call gasDamage;
+                        call setNoGasStatus;
+                        waituntil
+                        {
+                                _smokeShell = nearestObject [getPosATL player, launcherSmokeShell];
+                                _curPlayerInvulnState = player getVariable ["isAdminInvulnerable", false];
+                                _smokeShell distance player < effectDistance
+                                &&
+                                velocity _smokeShell isEqualTo [ 0, 0, 0 ]
+                                &&
+                                !_curPlayerInvulnState
+                        };
+                        if ((headgear player in gasMask) || ((typeOf vehicle player) in exemptVehicles)) then
+                        {
+                                call setNoGasStatus;
+                        }
+                        else
+                        {
+                                call setGasStatus;
+                                call gasDamage;
+                        };
                 };
         };
