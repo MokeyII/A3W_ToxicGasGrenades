@@ -94,7 +94,8 @@ setGasStatus =
 gasDamage =
         {
                 player setDamage (damage player + 0.15);        //damage per tick
-                sleep 3;                                        // Timer damage is assigned "seconds"
+                sleep 5;                                        // Timer damage is assigned "seconds"
+                [5] call BIS_fnc_bloodEffect;
         };
 
 []spawn{
